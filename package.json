@@ -1,0 +1,24 @@
+{
+  "name": "swagger-gen-compare",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "v2-dtsgen": "dtsgen ./v2/swagger.json --out ./v2/dtsgen/petstore.d.ts",
+    "v2-sta": "swagger-typescript-api -p ./v2/swagger.json --no-client -n ./v2/swagger-typescript-api/petstore.ts",
+    "v2-ot": "openapi-typescript ./v2/swagger.json -o ./v2/openapi-typescript/petstore.d.ts",
+    "v2": "npm run v2-dtsgen && npm run v2-sta && npm run v2-ot",
+    "v3-dtsgen": "dtsgen ./v3/swagger.json --out ./v3/dtsgen/petstore.d.ts",
+    "v3-sta": "swagger-typescript-api -p ./v3/swagger.json --no-client -n ./v3/swagger-typescript-api/petstore.ts",
+    "v3-ot": "openapi-typescript ./v3/swagger.json -o ./v3/openapi-typescript/petstore.d.ts",
+    "v3": "npm run v3-sta && npm run v3-ot",
+    "serve": "npm run v2 && npm run v3"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dtsgenerator": "^3.18.0",
+    "openapi-typescript": "^6.3.9",
+    "swagger-typescript-api": "^13.0.2"
+  }
+}
